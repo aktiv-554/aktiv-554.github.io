@@ -10,7 +10,7 @@ import EventsPage from './pages/EventsPage/EventsPage'
 import SuggestionPage from './pages/SuggestionPage/SuggestionPage'
 import MainLayout from './layouts/MainLayout/MainLayout'
 import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage'
-import EventDetailPage from './pages/EventDetailPage copy/EventDetailPage'
+import EventDetailPage from './pages/EventDetailPage/EventDetailPage'
 
 function App() {
   const [count, setCount] = useState(0)

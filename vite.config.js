@@ -4,9 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // base: '/aktiv-554-local/',
   base: '/aktiv-554.github.io/',
-  //TODO: Перед деплоем заменить base в конфиге
   
   plugins: [
     react(),
