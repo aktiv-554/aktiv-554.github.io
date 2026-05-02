@@ -1,0 +1,31 @@
+.news-page {
+  width: 100%;
+}
+
+.news-page__news-block {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 100%;
+}
+
+.news-page__news-title {
+  user-select: none;
+  margin: 2rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+.news-page__news-title svg {
+  text-align: center;
+  color: var(--text);
+  font-size: 2rem;
+}
+.news-page__news-title h2 {
+  margin: 0;
+  text-align: center;
+  color: var(--text);
+  font-size: 2rem;
+}

@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Logo font";
+  src: url('/src/assets/fonts/RussianRail_G_Pro_Regular.otf');
+}
+
+.sovet-logo {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.sovet-logo__image {
+  aspect-ratio: 1/1;
+  height: 3rem;
+  background: url('/src/assets/images/logo-big.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.sovet-logo__text {
+  font-family: "Logo font";
+  font-size: 2rem;
+  margin: 0;
+}

@@ -1,0 +1,25 @@
+.news-detail-page {
+  margin-top: 2rem;
+  width: 90%;
+}
+
+.news-detail-image {
+  border-radius: 1rem;
+  height: 15rem;
+  max-height: 20rem;
+  max-width: 95%;
+  margin: 0.5rem;
+}
+
+.center-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-detail-title {
+  color: var(--text-h);
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
