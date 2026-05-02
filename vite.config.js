@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/aktiv-554.github.io/',
+  base: '/',
   
   plugins: [
     react(),
@@ -19,7 +19,7 @@ export default defineConfig({
         display: 'standalone',
         icons: [
           {
-            src: '/public/logo-big.png',
+            src: 'logo-big.png',
             sizes: '192x192',
             type: 'image/png'
           }
