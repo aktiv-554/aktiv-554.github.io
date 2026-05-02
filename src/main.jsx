@@ -7,7 +7,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/aktiv-554-local">
+    <BrowserRouter basename="/aktiv-554.github.io">
       <DataProvider>
         <App />
       </DataProvider>
