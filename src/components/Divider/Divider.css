@@ -4,10 +4,11 @@
 }
 
 .divider div {
-  width: 100%;
+  width: 40%;
   border-radius: 1rem;
   border: solid;
   border-color: var(--text);
   border-width: 0.1rem;
   margin: 1rem 0;
+  opacity: 0.4;
 }

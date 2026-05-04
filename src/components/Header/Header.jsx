@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import SovetLogo from '../SovetLogo/SovetLogo'
 import './Header.css'
+import { useState, useEffect, useRef } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
+import SovetLogo from '../SovetLogo/SovetLogo'
+import { HiOutlineMenu } from "react-icons/hi";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { HiNewspaper } from "react-icons/hi";
 import { HiOutlineGlobe } from "react-icons/hi";
@@ -14,7 +15,55 @@ import { HiInformationCircle } from "react-icons/hi";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeNow, setActiveNow] = useState('')
+  const location = useLocation()
+  const historyPushed = useRef(false)
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [location])
+
+  useEffect(() => {
+    if (isOpen && !historyPushed.current) {
+      window.history.pushState({ menuOpen: true }, '', window.location.href)
+      historyPushed.current = true
+    }
+
+    if (!isOpen && historyPushed.current) {
+      historyPushed.current = false
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    const handlePopState = (e) => {
+      if (historyPushed.current) {
+        setIsOpen(false)
+        historyPushed.current = false
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState)
+  }, [])
+
+ useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = 'hidden'
+    document.body.style.touchAction = 'none'
+    document.body.style.overscrollBehavior = 'none'
+  } else {
+    document.body.style.overflow = ''
+    document.body.style.touchAction = ''
+    document.body.style.overscrollBehavior = ''
+  }
   
+  return () => {
+    document.body.style.overflow = ''
+    document.body.style.touchAction = ''
+    document.body.style.overscrollBehavior = ''
+  }
+}, [isOpen])
+
+
 
   const menuItems = [
     { path: '/news', label: 'Новости', id: 'news' },
@@ -31,15 +80,10 @@ export default function Header() {
           <SovetLogo withText={true}></SovetLogo>
         </NavLink>
 
-        <button 
+        <HiOutlineMenu 
           className={`burger ${isOpen ? 'burger-active' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Меню"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        />
 
         <div 
           className={`overlay ${isOpen ? 'overlay-visible' : ''}`}

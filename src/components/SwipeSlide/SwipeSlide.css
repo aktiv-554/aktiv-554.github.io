@@ -85,7 +85,9 @@
   height: 45px;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  opacity: 0.9;
+  background: var(--bg-2);
+  /* background: rgba(255, 255, 255, 0.9); */
   font-size: 28px;
   cursor: pointer;
   align-items: center;
@@ -95,8 +97,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.banner-btn svg {
+  color: var(--text-h);
+}
+
 .banner-btn:hover {
-  background: white;
+  opacity: 1;
   transform: translateY(-50%) scale(1.1);
 }
 

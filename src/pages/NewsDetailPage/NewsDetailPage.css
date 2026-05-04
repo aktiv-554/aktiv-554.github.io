@@ -1,5 +1,5 @@
 .news-detail-page {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   width: 90%;
 }
 
@@ -21,5 +21,36 @@
 .news-detail-title {
   color: var(--text-h);
   font-size: 1.8rem;
-  margin-bottom: 0;
+  margin: 0;
+}
+
+.news-detail-subtitle {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.news-detail-subtitle svg {
+  aspect-ratio: 1/1;
+  height: 1.8rem;
+  width: 1.8rem;
+  user-select: none;
+}
+
+.news-detail-subtitle h2 {
+  margin: 0.7rem 0;
+}
+
+.news-detail-subtitle-center-block {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .news-detail-subtitle-center-block {
+    width: 100%;
+    display: flex;
+  }
 }

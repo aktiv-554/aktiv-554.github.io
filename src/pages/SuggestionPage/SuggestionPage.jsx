@@ -12,7 +12,7 @@ export default function SuggestionPage() {
   return (
     <div className="suggestion-page">
       
-      <iframe className='sug-page-iframe' src={`${sugLink}?iframe=1`} frameborder="0" name={`${sugLink}`.replace('https://forms.yandex.ru/u/', 'ya-form-').replace('?iframe=1', '')}></iframe>
+      <iframe className='sug-page-iframe' src={`${sugLink}?iframe=1`} frameBorder="0" name={`${sugLink}`.replace('https://forms.yandex.ru/u/', 'ya-form-').replace('?iframe=1', '')}></iframe>
 
       {!loading && activeSuggestions.length > 0 && <div className="suggestion-page__sug">
         <div className="suggestion-page__sug-title">

@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useData } from '../../context/DataContext'
 import ReactMarkdown from 'react-markdown';
 import { useEffect, useState } from 'react';
+import prettyDate from '../../utils/prettyData';
+import { HiOutlineCalendar } from "react-icons/hi";
+import Divider from '../../components/Divider/Divider';
 
 export default function NewsDetailPage() {
   const { id } = useParams();
@@ -34,6 +37,14 @@ export default function NewsDetailPage() {
         <div className="center-block">
           <h2 className="news-detail-title">{item.title}</h2>
         </div>
+        {item.date && <div className="news-detail-subtitle-center-block">
+          <div className="news-detail-subtitle">
+            <HiOutlineCalendar/>
+            <h2>{prettyDate(item.date)}{item.time ? (', ' + item.time) : ''}</h2>
+          </div>
+        </div>}
+
+        <Divider/>
   
         <ReactMarkdown>
           {item.textData}
