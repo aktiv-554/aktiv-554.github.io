@@ -44,7 +44,7 @@ export default function EventDetailPage() {
           <img className='events-detail-image' src={imgSource} alt={item.image}/>
         </div>
 
-        <div className="center-block" onClick={() => {setIframeVisibility(true)}}>
+        <div className="center-block" onClick={() => {setIframeVisibility(!iframeVisibility)}}>
           <div className="events-detail-go-button">
             <h2>ЗАПИСАТЬСЯ</h2>
             <HiOutlineHand/>
