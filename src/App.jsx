@@ -11,6 +11,7 @@ import SuggestionPage from './pages/SuggestionPage/SuggestionPage'
 import MainLayout from './layouts/MainLayout/MainLayout'
 import NewsDetailPage from './pages/NewsDetailPage/NewsDetailPage'
 import EventDetailPage from './pages/EventDetailPage/EventDetailPage'
+import SuggestionsDetailPage from './pages/SuggestionsDetailPage/SuggestionsDetailPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
         <Route path="news" element={<NewsPage />} />
         <Route path="news/:id" element={<NewsDetailPage />} /> 
         <Route path="suggestions" element={<SuggestionPage />} />
+        <Route path="suggestions/:id" element={<SuggestionsDetailPage />} /> 
         <Route path="event" element={<EventsPage />} />
         <Route path="event/:id" element={<EventDetailPage />} /> 
         <Route path="about" element={<AboutPage />} />

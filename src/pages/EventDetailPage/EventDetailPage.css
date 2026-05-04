@@ -1,0 +1,42 @@
+.events-detail-page {
+  margin-top: 0.5rem;
+  width: 90%;
+}
+
+.events-detail-image {
+  border-radius: 1rem;
+  height: 15rem;
+  max-height: 20rem;
+  max-width: 95%;
+  margin: 0.5rem;
+}
+
+.center-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-detail-title {
+  color: var(--text-h);
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.events-detail-subtitle {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.events-detail-subtitle svg {
+  aspect-ratio: 1/1;
+  height: 2rem;
+  width: 2rem;
+  user-select: none;
+}
+
+.events-detail-subtitle h2 {
+  margin: 0.7rem 0;
+}

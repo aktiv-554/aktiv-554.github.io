@@ -13,7 +13,7 @@ export default defineConfig({
       manifest: {
         name: 'Актив 554',
         short_name: 'Актив 554',
-        description: 'Новости Лицея №554 и предложения от учеников',
+        description: 'Сайт ученического совета ГБОУ лицей №554 Санкт-Петербурга. Новости, мероприятия, состав совета и наши проекты',
         theme_color: '#1e88e5',
         background_color: '#ffffff',
         display: 'standalone',

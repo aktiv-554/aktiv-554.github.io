@@ -3,20 +3,38 @@ import './MainPage.css'
 import { HiOutlineGlobe } from "react-icons/hi";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { HiOutlineLightningBolt } from "react-icons/hi";
-
+import SwipeSlide from "../../components/SwipeSlide/SwipeSlide";
+import { useData } from '../../context/DataContext'
+import prettyDate from '../../utils/prettyData';
 
 export default function MainPage() {
+  const { activeSuggestions, loading } = useData()
   return (
     <div className="main-page">
-      <div className="main-page__events">
+      
+      <SwipeSlide />
+      
+      {!loading && <div className="main-page__events">
         <div className="main-page__events-title">
           <HiOutlineLightningBolt/>
           <h2>ГОЛОСОВАНИЯ</h2>
         </div>
         <div className="main-page__events-block">
-          <InfoBlock imageId="logo-big.png" infoType="event" date="До 10 мая 2026" bgSize="contain" title="Повесить в школе ящик для предложений"></InfoBlock>
+          {
+            activeSuggestions.map(item => (
+              <InfoBlock 
+                key={item.id}
+                blockId={item.id}
+                imageId={item.image}
+                infoType="suggestions"
+                date={'До ' + prettyDate(item.date)}
+                bgSize={item.bgSize}
+                title={item.title}
+              />
+            ))
+          }
         </div>
-      </div>
+      </div>}
 
       
     </div>

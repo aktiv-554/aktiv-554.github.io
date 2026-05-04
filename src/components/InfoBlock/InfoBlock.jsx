@@ -26,13 +26,14 @@ export default function InfoBlock({
         <div className="info-block__image" style={{
           background: `url(${img_source})`,
           backgroundPosition: 'center',
-          backgroundSize: bgSize,
-          backgroundRepeat: 'no-repeat',
+          backgroundSize: `${bgSize == 'contain' ? 'auto 95%' : bgSize}`,
+          backgroundRepeat: 'no-repeat'
         }}></div>
       </div>
 
       <h2 className="info-block__title">{title}</h2>
       <p className="info-block__date">{date}{time ? `, ${time}` : ''} {location ? ` • ${location}` : ''}</p>
+      {/* <p className="info-block__date">{date}{location ? `, ${location}` : ''} {time ? ` • ${time}` : ''}</p> */}
     </NavLink>
   )
 }

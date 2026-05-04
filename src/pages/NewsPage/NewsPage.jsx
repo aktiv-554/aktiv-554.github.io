@@ -10,10 +10,10 @@ export default function NewsPage() {
   
   return (
     <div className="news-page">
-      <div className="news-page__news">
+      {hotNews.length > 0 && <div className="news-page__news">
         <div className="news-page__news-title">
           <HiOutlineNewspaper/>
-          <h2>СВЕЖИЕ НОВОСТИ</h2>
+          <h2>СВЕЖИЕ</h2>
         </div>
         <div className="news-page__news-block">
           {
@@ -30,9 +30,9 @@ export default function NewsPage() {
             ))
           }
         </div>
-      </div>
+      </div>}
 
-      {archiveNews.lenght > 0 && <div className="news-page__news">
+      {archiveNews.length > 0 && <div className="news-page__news">
         <div className="news-page__news-title">
           <HiOutlineArchive />
           <h2>АРХИВ НОВОСТЕЙ</h2>

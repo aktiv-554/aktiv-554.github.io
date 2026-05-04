@@ -91,14 +91,13 @@
   height: 100vh;
   background: var(--bg);
   /* background: #d2a510; */
-  padding: 5rem 1.5rem 1.5rem;
+  padding: 2rem 1rem;
   transition: right 0.3s ease;
   box-shadow: -0.3rem 0 0.8rem rgba(0,0,0,0.15);
 }
 
 .nav-open {
   right: 0;
-  padding: 2rem 1rem;
 }
 
 .nav-link {

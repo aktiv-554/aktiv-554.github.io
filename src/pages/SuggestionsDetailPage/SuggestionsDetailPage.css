@@ -1,0 +1,38 @@
+.sug-detail-page {
+  margin-top: 2rem;
+  width: 90%;
+}
+
+.sug-detail-image {
+  border-radius: 1rem;
+  height: 15rem;
+  max-height: 20rem;
+  max-width: 95%;
+  margin: 0.5rem;
+}
+
+.center-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sug-detail-title {
+  color: var(--text-h);
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
+.sug-iframe {
+  width: 100%;
+  scale: 1.1;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sug-iframe {
+    margin: 3rem 0;
+  }
+}

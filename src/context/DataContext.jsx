@@ -1,19 +1,64 @@
 import { createContext, useContext, useState, useEffect, useMemo } from 'react'
 import newsData from '../store/news.json'
 import eventsData from '../store/events.json'
+import suggestionsData from '../store/suggestions.json'
 
 const DataContext = createContext()
 
 export function DataProvider({ children }) {
   const [news, setNews] = useState([])
   const [events, setEvents] = useState([])
+  const [suggestions, setSuggestions] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setNews(newsData)
     setEvents(eventsData)
+    setSuggestions(suggestionsData)
     setLoading(false)
   }, [])
+
+  const closedSuggestions = useMemo(() => {
+    const today = new Date();
+    return suggestions
+      .filter(item => {
+        const isClosedStatus = item.status === 'closed' || item.status === 'done';
+        const isExpired = item.date && new Date(item.date) < today;
+        
+        return isClosedStatus || isExpired;
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, [suggestions]);
+
+
+  const activeSuggestions = useMemo(() => {
+    const today = new Date();
+    return suggestions
+      .filter(item => {
+        const isNotClosed = item.status !== 'closed' && item.status !== 'done';
+        const isNotExpired = item.date ? new Date(item.date) >= today : true; 
+        
+        return isNotClosed && isNotExpired;
+      })
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, [suggestions]);
+
+
+  const addSuggestion = (suggestion) => {
+    const newSuggestion = {
+      id: Date.now(),
+      ...suggestion,
+      date: new Date().toISOString(),
+      status: 'new'
+    }
+    setSuggestions(prev => [newSuggestion, ...prev])
+  }
+
+  const updateSuggestion = (id, updates) => {
+    setSuggestions(prev => prev.map(item => 
+      item.id === id ? { ...item, ...updates } : item
+    ))
+  }
 
   const hotNews = useMemo(() => {
     const monthAgo = new Date()
@@ -36,14 +81,14 @@ export function DataProvider({ children }) {
   const upcomingEvents = useMemo(() => {
     const today = new Date()
     return events
-      .filter(item => new Date(item.date) >= today)
+      .filter(item => new Date(`${item.date}T${item.time}`) >= today)
       .sort((a, b) => new Date(a.date) - new Date(b.date))
   }, [events])
 
   const pastEvents = useMemo(() => {
     const today = new Date()
     return events
-      .filter(item => new Date(item.date) < today)
+      .filter(item => new Date(`${item.date}T${item.time}`) < today)
       .sort((a, b) => new Date(b.date) - new Date(a.date))
   }, [events])
 
@@ -57,12 +102,26 @@ export function DataProvider({ children }) {
       events: events.filter(item =>
         item.title.toLowerCase().includes(q) ||
         item.description.toLowerCase().includes(q)
+      ),
+      suggestions: suggestions.filter(item =>
+        item.title?.toLowerCase().includes(q) ||
+        item.text?.toLowerCase().includes(q)
       )
     }
   }
 
   const getById = (id, type = 'news') => {
-    const data = type === 'event' ? events : news
+    let data
+    if (type === 'news') {
+      data = news
+    }
+    else if (type === 'event') {
+      data = events
+    }
+    else if (type === 'sug') {
+      data = suggestions
+    }
+    
     return data.find(item => item.id === id)
   }
 
@@ -74,6 +133,7 @@ export function DataProvider({ children }) {
       // Данные
       news,
       events,
+      suggestions,
       loading,
       
       // Фильтрованные данные
@@ -81,11 +141,15 @@ export function DataProvider({ children }) {
       archiveNews,
       upcomingEvents,
       pastEvents,
+      closedSuggestions,
+      activeSuggestions,
       
       // Функции
       searchAll,
       getById,
-      getNewsByType
+      getNewsByType,
+      addSuggestion,
+      updateSuggestion
     }}>
       {children}
     </DataContext.Provider>

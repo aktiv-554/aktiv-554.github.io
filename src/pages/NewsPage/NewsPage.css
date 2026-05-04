@@ -11,7 +11,7 @@
 
 .news-page__news-title {
   user-select: none;
-  margin: 2rem 0 2rem 0;
+  margin: 1rem 0 0.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,5 +27,5 @@
   margin: 0;
   text-align: center;
   color: var(--text);
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
