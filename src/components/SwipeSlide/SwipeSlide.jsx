@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import { useData } from '../../context/DataContext'
+import { useData } from '../../hooks/useData'
 import { NavLink } from 'react-router-dom'
 import './SwipeSlide.css'
 import { HiArrowRight } from "react-icons/hi";
 import { HiArrowLeft } from "react-icons/hi";
 import { HiOutlineLightningBolt } from "react-icons/hi";
+import prettyDate from '../../utils/prettyData'
 
 export default function SwipeSlide() {
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -19,7 +20,8 @@ export default function SwipeSlide() {
 
   useEffect(() => {
     if (hotNews && activeSuggestions) {
-      setHotData([...hotNews, ...activeSuggestions])
+      setHotData([...hotNews])
+      // setHotData([...hotNews, ...activeSuggestions])
     }
   }, [hotNews, activeSuggestions])
 
@@ -71,11 +73,7 @@ export default function SwipeSlide() {
                 <div className="banner-time">
                   {newsItem.id.includes('sug') && <HiOutlineLightningBolt/>}
                   <time>
-                    {newsItem.id.includes('sug') && 'До '}{new Date(newsItem.date).toLocaleDateString('ru-RU', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    }).replace(' г.', '')}
+                    {newsItem.id.includes('sug') ? `${newsItem.timeLimit ? `До ${prettyDate(newsItem.date)}` : 'Без даты окончания'}` : prettyDate(newsItem.date)}
                   </time>
                 </div>
               </div>

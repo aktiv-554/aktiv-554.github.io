@@ -3,6 +3,10 @@
   /* padding-top: 1rem; */
 }
 
+.marg {
+  margin: 2rem 0;
+}
+
 .main-page__events-block,
 .main-page__news-block {
   display: flex;
@@ -33,4 +37,28 @@
   text-align: center;
   color: var(--text);
   font-size: 2rem;
+}
+
+.main-page-info-block {
+  display: none;
+  justify-content: center;
+  width: 70%;
+  align-items: center;
+  gap: 0.5rem;
+}
+.main-page-info-block svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.main-page-info {
+  display: block;
+  font-size: 0.8rem;
+  padding: 1rem 0.2rem;
+}
+
+@media (min-width: 860px) {
+  .main-page-info-block {
+    display: flex;
+  }
 }

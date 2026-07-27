@@ -1,4 +1,4 @@
-import { useData } from '../../context/DataContext'
+import { useData } from '../../hooks/useData'
 import InfoBlock from "../../components/InfoBlock/InfoBlock"
 import './NewsPage.css'
 import { HiOutlineNewspaper } from "react-icons/hi";
@@ -11,10 +11,10 @@ export default function NewsPage() {
   return (
     <div className="news-page">
       {hotNews.length > 0 && <div className="news-page__news">
-        <div className="news-page__news-title">
+        {/* <div className="news-page__news-title">
           <HiOutlineNewspaper/>
           <h2>СВЕЖИЕ</h2>
-        </div>
+        </div> */}
         <div className="news-page__news-block">
           {
             hotNews.map(item => (

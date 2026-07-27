@@ -18,6 +18,10 @@
   align-items: center;
 }
 
+.news-detail-markdown-margin {
+  margin-top: 2rem;
+}
+
 .news-detail-title {
   color: var(--text-h);
   font-size: 1.8rem;

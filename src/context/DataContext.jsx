@@ -1,22 +1,13 @@
-import { createContext, useContext, useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import newsData from '../store/news.json'
 import eventsData from '../store/events.json'
 import suggestionsData from '../store/suggestions.json'
-
-const DataContext = createContext()
+import { DataContext } from '../hooks/useData'
 
 export function DataProvider({ children }) {
-  const [news, setNews] = useState([])
-  const [events, setEvents] = useState([])
-  const [suggestions, setSuggestions] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setNews(newsData)
-    setEvents(eventsData)
-    setSuggestions(suggestionsData)
-    setLoading(false)
-  }, [])
+  const news = newsData;
+  const events = eventsData;
+  const [suggestions, setSuggestions] = useState(suggestionsData);
 
   const closedSuggestions = useMemo(() => {
     const today = new Date();
@@ -134,7 +125,7 @@ export function DataProvider({ children }) {
       news,
       events,
       suggestions,
-      loading,
+      loading: false,
       
       // Фильтрованные данные
       hotNews,
@@ -154,12 +145,4 @@ export function DataProvider({ children }) {
       {children}
     </DataContext.Provider>
   )
-}
-
-export function useData() {
-  const context = useContext(DataContext)
-  if (!context) {
-    throw new Error('error')
-  }
-  return context
 }

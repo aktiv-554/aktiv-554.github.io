@@ -91,70 +91,69 @@ export default function Header() {
         />
 
         <nav className={`nav ${isOpen ? 'nav-open' : ''}`}>
-          {menuItems.map(item => (
-            <NavLink
-              draggable={false}
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) => 
-                `nav-link ${isActive ? 'active' : ''}`
-              }
-              onClick={() => {
-                setIsOpen(false)
-                // setActiveNow(item.id)
-              }}
-            >
-              <div className="nav-icon">
-                {
-                  item.id == 'news' && item.id == activeNow ?
-                  <HiNewspaper></HiNewspaper>
-                  : false
+          <div>
+            {menuItems.map(item => (
+              <NavLink
+                draggable={false}
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
                 }
-                {
-                  item.id == 'news' && item.id !== activeNow ?
-                  <HiOutlineNewspaper></HiOutlineNewspaper>
-                  : false
-                }
+                onClick={() => {
+                  setIsOpen(false)
+                  // setActiveNow(item.id)
+                }}
+              >
+                <div className="nav-icon">
+                  {
+                    item.id == 'news' && item.id == activeNow ?
+                    <HiNewspaper></HiNewspaper>
+                    : false
+                  }
+                  {
+                    item.id == 'news' && item.id !== activeNow ?
+                    <HiOutlineNewspaper></HiOutlineNewspaper>
+                    : false
+                  }
+            
+                  {
+                    item.id == 'events' && item.id == activeNow ?
+                    <HiGlobe></HiGlobe>
+                    : false
+                  }
+                  {
+                    item.id == 'events' && item.id !== activeNow ?
+                    <HiOutlineGlobe></HiOutlineGlobe>
+                    : false
+                  }
+                  {
+                    item.id == 'suggestions' && item.id == activeNow ?
+                    <HiLightBulb></HiLightBulb>
+                    : false
+                  }
+                  {
+                    item.id == 'suggestions' && item.id !== activeNow ?
+                    <HiOutlineLightBulb></HiOutlineLightBulb>
+                    : false
+                  }
+                  {
+                    item.id == 'about' && item.id == activeNow ?
+                    <HiInformationCircle></HiInformationCircle>
+                    : false
+                  }
+                  {
+                    item.id == 'about' && item.id !== activeNow ?
+                    <HiOutlineInformationCircle></HiOutlineInformationCircle>
+                    : false
+                  }
+                </div>
+                <p>{item.label}</p>
+              </NavLink>
+            ))}
+          </div>
 
-                
-                {
-                  item.id == 'events' && item.id == activeNow ?
-                  <HiGlobe></HiGlobe>
-                  : false
-                }
-                {
-                  item.id == 'events' && item.id !== activeNow ?
-                  <HiOutlineGlobe></HiOutlineGlobe>
-                  : false
-                }
-
-
-                {
-                  item.id == 'suggestions' && item.id == activeNow ?
-                  <HiLightBulb></HiLightBulb>
-                  : false
-                }
-                {
-                  item.id == 'suggestions' && item.id !== activeNow ?
-                  <HiOutlineLightBulb></HiOutlineLightBulb>
-                  : false
-                }
-
-
-                {
-                  item.id == 'about' && item.id == activeNow ?
-                  <HiInformationCircle></HiInformationCircle>
-                  : false
-                }
-                {
-                  item.id == 'about' && item.id !== activeNow ?
-                  <HiOutlineInformationCircle></HiOutlineInformationCircle>
-                  : false
-                }
-              </div>
-              <p>{item.label}</p>
-            </NavLink>
-          ))}
+          <h2 className="nav-menu-mobile-info">Данный сайт не является оффициальным сайтом Лицея.</h2>
         </nav>
       </div>
     </header>

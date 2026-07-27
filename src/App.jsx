@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header/Header'
 import SovetLogo from './components/SovetLogo/SovetLogo'
@@ -15,6 +16,25 @@ import SuggestionsDetailPage from './pages/SuggestionsDetailPage/SuggestionsDeta
 
 function App() {
   const [count, setCount] = useState(0)
+  const location = useLocation()
+  
+  useEffect(() => {
+    const calculateScrollbarWidth = () => {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.documentElement.style.setProperty('--sw', `${scrollbarWidth}px`)
+    }
+
+    setTimeout(() => {
+      calculateScrollbarWidth()
+    }, 50)
+
+    window.addEventListener('resize', calculateScrollbarWidth)
+
+    return () => {
+      window.removeEventListener('resize', calculateScrollbarWidth)
+    }
+
+  }, [location.pathname])
 
   return (
     <Routes>

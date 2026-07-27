@@ -1,11 +1,12 @@
 import './NewsDetailPage.css'
 import { useParams } from 'react-router-dom';
-import { useData } from '../../context/DataContext'
+import { useData } from '../../hooks/useData'
 import ReactMarkdown from 'react-markdown';
 import { useEffect, useState } from 'react';
-import prettyDate from '../../utils/prettyData';
-import { HiOutlineCalendar } from "react-icons/hi";
-import Divider from '../../components/Divider/Divider';
+// import prettyDate from '../../utils/prettyData';
+// import { HiOutlineCalendar } from "react-icons/hi";
+// import Divider from '../../components/Divider/Divider';
+import BannerImage from '../../components/BannerImage/BannerImage';
 
 export default function NewsDetailPage() {
   const { id } = useParams();
@@ -31,21 +32,10 @@ export default function NewsDetailPage() {
     return (
     <>
       {!loading && <div className='news-detail-page'>
-        <div className="center-block">
-          <img className='news-detail-image' src={imgSource} alt={item.image}/>
-        </div>
-        <div className="center-block">
-          <h2 className="news-detail-title">{item.title}</h2>
-        </div>
-        {item.date && <div className="news-detail-subtitle-center-block">
-          <div className="news-detail-subtitle">
-            <HiOutlineCalendar/>
-            <h2>{prettyDate(item.date)}{item.time ? (', ' + item.time) : ''}</h2>
-          </div>
-        </div>}
+        <BannerImage cat="news" item={item} />
 
-        <Divider/>
-  
+        <div className="news-detail-markdown-margin"></div>
+
         <ReactMarkdown>
           {item.textData}
         </ReactMarkdown>
